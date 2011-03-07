@@ -22,6 +22,20 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
     "com.h2database" % "h2" % "1.2.138",
     "org.mortbay.jetty" % "jetty" % "6.1.22" % "test->default",
     "junit" % "junit" % "4.5" % "test->default",
-    "org.scala-tools.testing" % "specs" % "1.6.1" % "test->default"
+    "org.scala-tools.testing" % "specs" % "1.6.1" % "test->default",
+    
+    "log4j" % "log4j" % "1.2.16",
+    "org.slf4j" % "slf4j-log4j12" % "1.6.1",
+    
+    // For JNDI:
+    "org.mortbay.jetty" % "jetty-plus" % "6.1.26" % "test",
+    "org.mortbay.jetty" % "jetty-naming" % "6.1.26" % "test",
+    "mysql" % "mysql-connector-java" % "5.1.14"
+
   ) ++ super.libraryDependencies
+  
+  // Also for JNDI:
+  //System.setProperty("java.naming.factory.url.pkgs", "org.mortbay.naming")
+  //System.setProperty("java.naming.factory.initial", "org.mortbay.naming.InitialContextFactory")
+  override def jettyEnvXml = Some(new java.io.File("./src/main/webapp/WEB-INF/jetty-env.xml"))
 }

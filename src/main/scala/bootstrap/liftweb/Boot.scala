@@ -16,7 +16,11 @@ import com.example.model._
 class Boot {
   def boot {
   
+    // JDNI:
+    DefaultConnectionIdentifier.jndiName = "jdbc/example-database"
+  
     if (!DB.jndiJdbcConnAvailable_?) {
+      println("NO JNDI CONNECTION")
       val vendor = 
         new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
         			               Props.get("db.url") openOr 
@@ -26,12 +30,14 @@ class Boot {
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 
       DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
+    } else {
+      println("jndi connection found")
     }
 
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User)
+    //Schemifier.schemify(true, Schemifier.infoF _, User)
 
   
     // where to search snippet
