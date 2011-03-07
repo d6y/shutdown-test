@@ -24,7 +24,7 @@ Steps to reproduce
 
 This git project is a SBT 0.7.5.RC0 projects created with Lifty for LIFT 2.3-SNAPSHOT running under Scala 2.8.1
 
-	$ git clone shutdown-test
+	$ git clone git://github.com/d6y/shutdown-test.git
 	$ cd shutdown-test
 	$ sbt
 	> update
@@ -32,7 +32,7 @@ This git project is a SBT 0.7.5.RC0 projects created with Lifty for LIFT 2.3-SNA
 
 Ensure that the output from jetty-run includes "JNDI connection found".
 
-Then visit http://127.0.0.1:8080/
+Then visit http://127.0.0.1:8080/  (this is important as active comet actors are needed to trigger the issue)
 
 Finally, run...
 
