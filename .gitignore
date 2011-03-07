@@ -1,7 +1,3 @@
-.idea
-Tasks.iml
-Tasks.ipr
-Tasks.iws
 .classpath
 .ensime*
 ensime_port
@@ -10,13 +6,11 @@ ensime_port
 .settings
 target
 /lift_proto.db*
+test/*
 .scala_dependencies
-tasks.iml
-tasks.ipr
-tasks.iws
 lib_managed/
 src_managed/
 project/boot/
 project/plugins/project
-
+derby.log
 

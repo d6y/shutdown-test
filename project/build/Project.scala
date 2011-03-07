@@ -28,14 +28,11 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
     "org.slf4j" % "slf4j-log4j12" % "1.6.1",
     
     // For JNDI:
-    "org.mortbay.jetty" % "jetty-plus" % "6.1.26" % "test",
-    "org.mortbay.jetty" % "jetty-naming" % "6.1.26" % "test",
-    "mysql" % "mysql-connector-java" % "5.1.14"
+    "org.mortbay.jetty" % "jetty-plus" % "6.1.22" % "test",
+    "org.mortbay.jetty" % "jetty-naming" % "6.1.22" % "test"
 
   ) ++ super.libraryDependencies
   
   // Also for JNDI:
-  //System.setProperty("java.naming.factory.url.pkgs", "org.mortbay.naming")
-  //System.setProperty("java.naming.factory.initial", "org.mortbay.naming.InitialContextFactory")
   override def jettyEnvXml = Some(new java.io.File("./src/main/webapp/WEB-INF/jetty-env.xml"))
 }

@@ -17,10 +17,10 @@ class Boot {
   def boot {
   
     // JDNI:
-    DefaultConnectionIdentifier.jndiName = "jdbc/example-database"
+    DefaultConnectionIdentifier.jndiName = "jdbc/exampleDb"
   
     if (!DB.jndiJdbcConnAvailable_?) {
-      println("NO JNDI CONNECTION")
+      println("\n\n ----> NO JNDI CONNECTION: this means you won't reproduce the issue <------- \n\n")
       val vendor = 
         new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
         			               Props.get("db.url") openOr 
@@ -31,12 +31,13 @@ class Boot {
 
       DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
     } else {
-      println("jndi connection found")
+      println("JNDI connection found")
     }
 
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
+    // JNDI: I commented this out as we don't need to even touch the db to trigger the issue
     //Schemifier.schemify(true, Schemifier.infoF _, User)
 
   

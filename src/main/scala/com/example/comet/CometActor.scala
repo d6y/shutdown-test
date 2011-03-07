@@ -30,6 +30,8 @@ class CometMessage extends CometActor {
 [error]  found   : net.liftweb.http.js.JE.Str
 [error]  required: scala.xml.NodeSeq
 [error]       partialUpdate(SetHtml("message", Str("updated: " + timeNow.toString)))
+
+for now I've just dropped in Text() in lowPriority
 	*/	
 		
   override def lowPriority : PartialFunction[Any,Unit] = {

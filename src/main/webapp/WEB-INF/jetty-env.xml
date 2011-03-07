@@ -4,14 +4,13 @@
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
 
 <New id="example-database" class="org.mortbay.jetty.plus.naming.Resource">
-        <Arg><!-- blank here means Scope = JVM --></Arg>
-    <Arg>jdbc/example-database</Arg>
+    <Arg><!-- blank here means Scope = JVM --></Arg>
+    <Arg>jdbc/exampleDb</Arg>
     <Arg>
-<New class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
-                 <Set name="Url">jdbc:mysql://localhost:3306/tasks</Set>
-                 <Set name="User">tasks</Set>
-                 <Set name="Password">S28hiagnoiaa</Set>
-     </New>
+	 <New class="org.apache.derby.jdbc.EmbeddedDataSource">
+      <Set name="DatabaseName">test</Set>
+      <Set name="createDatabase">create</Set>
+    </New>
     </Arg>
 </New>
 
