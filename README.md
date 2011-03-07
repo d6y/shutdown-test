@@ -3,8 +3,8 @@ Behaviour
 
 When using a JNDI data source and Jetty, shutting down Jetty causes Lift to throw an exception if there are active comet actors.
 
- 2011-03-07 21:41:51,510 WARN  - Failure in remove session
-java.lang.NullPointerException: Looking for Connection Identifier ConnectionIdentifier(jdbc/exampleDb) but failed to find either a JNDI data source with the name jdbc/exampleDb or a lift connection manager with the correct name
+	2011-03-07 21:41:51,510 WARN  - Failure in remove session
+	java.lang.NullPointerException: Looking for Connection Identifier ConnectionIdentifier(jdbc/exampleDb) but failed to find either a JNDI data source with the name jdbc/exampleDb or a lift connection manager with the correct name
 	at net.liftweb.db.DB$$anonfun$7$$anonfun$apply$11.apply(DB.scala:154)
 	at net.liftweb.db.DB$$anonfun$7$$anonfun$apply$11.apply(DB.scala:154)
 	at net.liftweb.common.EmptyBox.openOr(Box.scala:561)
@@ -24,19 +24,21 @@ Steps to reproduce
 
 This git project is a SBT 0.7.5.RC0 projects created with Lifty for LIFT 2.3-SNAPSHOT running under Scala 2.8.1
 
-$ git clone shutdown-test
-$ cd shutdown-test
-$ sbt
-> update
-> jetty-run
+	$ git clone shutdown-test
+	$ cd shutdown-test
+	$ sbt
+	> update
+	> jetty-run
 
 Ensure that the output from jetty-run includes "JNDI connection found".
 
-Visit http://127.0.0.1:8080/
+Then visit http://127.0.0.1:8080/
 
-sbt> jetty-stop
+Finally, run...
 
-Observe stack trace.
+	> jetty-stop
+
+See the stack trace?
 
 Observations
 ------------
