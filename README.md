@@ -48,6 +48,7 @@ Observations
 * Note that the app does not access the data source (no schemify, no mapper access)
 * Tested with MySQL, and MySQL with C3P0 polling - produces the stack trace.
 * Grep the project for "JNDI" for places I have touched the default Lifty app.
+* Did not see this with Tomcat 6 with a similar configuration.
 
 
 
